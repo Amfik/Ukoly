@@ -22,30 +22,41 @@ def overeni_zaporu(cislo):
 def prevadeni(cislo):
     prevedene=[]
 
-#definice vyjimek psanych odcitanim
-#if cislo is in vyjimky: #tech je tuna, nebo to nechapu..
-
     while cislo >= 1000:
         cislo=cislo-1000
         prevedene.append('M')
 
-    while cislo >= 500:
+    if cislo >= 900:
+        cislo=cislo-900
+        prevedene.append('CM')
+    elif cislo >= 500:
         cislo=cislo-500
         prevedene.append('D')
+    elif cislo >= 400:
+        cislo=cislo-400
+        prevedene.append('CD')
 
     while cislo >= 100:
         cislo=cislo-100
         prevedene.append('C')
 
-    while cislo >= 50:
+    if cislo >= 90:
+        cislo=cislo-90
+        prevedene.append('XC')
+    elif cislo >= 50:
         cislo=cislo-50
         prevedene.append('L')
+    elif cislo >= 40:
+        cislo=cislo-40
+        prevedene.append('XL')
 
     while cislo >= 10:
         cislo=cislo-10
         prevedene.append('X')
 
-    prevedene.append(prevod[cislo])
+    if cislo > 0:
+        prevedene.append(prevod[cislo])
+
     prevedene = ''.join(str(znak) for znak in prevedene)
     return prevedene
 
@@ -53,5 +64,4 @@ def prevadeni(cislo):
 if overeni_zaporu(cislo) == False:
     print('Zaporne nelze prevadet')
 else:
-    prevedene_cislo=(prevadeni(cislo))
-    print(prevedene_cislo)
+    print(prevadeni(cislo))
